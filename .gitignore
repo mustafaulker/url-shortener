@@ -1,0 +1,46 @@
+# ==> Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Coverage tool outputs
+*.out
+
+# Built application binaries (if not in versioned /bin or /tmp)
+main
+url-shortener
+/tmp/main
+
+# ==> Go dependency directories
+# Uncomment if vendor is auto-generated
+/vendor/
+
+# ==> Environment files
+.env
+.env.*    # any env overrides
+
+# ==> Air temp & build files
+tmp/
+.build/
+.air.*
+
+# ==> OS-specific files
+.DS_Store
+Thumbs.db
+
+# ==> IDE/editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# ==> Logs, caches, temp
+*.log
+*.tmp
+node_modules/  # if you ever mix with JS
