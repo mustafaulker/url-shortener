@@ -5,6 +5,7 @@ import (
 	"url-shortener/config"
 	"url-shortener/database"
 	"url-shortener/internal/handlers"
+	"url-shortener/internal/middleware"
 	"url-shortener/internal/repositories"
 	"url-shortener/internal/services"
 )
@@ -19,6 +20,8 @@ func Setup(app *fiber.App, cfg *config.Config) {
 	store := repositories.NewPostgresStore(db)
 	cache := repositories.NewRedisCache(rdb)
 	svc := services.NewService(store, cache, cfg.BaseURL)
+
+	app.Use(middleware.NewRateLimiter(rdb, cfg))
 
 	api := app.Group("/api")
 	api.Post("/shorten", handlers.NewShortenHandler(svc))
